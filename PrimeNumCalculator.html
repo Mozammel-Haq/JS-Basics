@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Factorial Calculator</title>
+    <title>Prime Number Checker</title>
     <style>
       .container {
         max-width: 1160px;
@@ -35,7 +35,7 @@
         border: none;
         border-radius: 0.5rem;
         outline: none;
-        padding: 1rem 3rem;
+        padding: 1rem 1rem;
         background-color: white;
         font-size: 18px;
         font-weight: bold;
@@ -54,10 +54,10 @@
     <div class="container">
       <form action="#" id="form">
         <label for="factorial_input"
-          >Enter the Number to Calculate Factorial!</label
+          >Enter the Number to Check Prime Number!</label
         >
         <input type="text" id="factorial_input" />
-        <button type="submit">Calculate Factorial</button>
+        <button type="submit">Check Prime Number</button>
       </form>
       <h1 id="result"></h1>
     </div>
@@ -69,21 +69,22 @@
         e.preventDefault();
         let number = Number(document.getElementById("factorial_input").value);
         let result = document.getElementById("result");
-        if (number <= 0) {
-          result.innerText = `The Factorial of ${number} can't be calculated`;
+
+        if (primeNumChecker(number)) {
+          result.innerText = `${number} is a Prime Number`;
         } else {
-          result.innerText = `The Factorial of ${number} ==> ${calculateFactorial(
-            number
-          )}`;
+          result.innerText = `${number} is not a Prime Number`;
         }
       });
-
-      function calculateFactorial(number) {
-        let factorial = 1;
-        for (let i = 1; i <= number; i++) {
-          factorial *= i;
+      function primeNumChecker(number) {
+        if (number <= 1) return false;
+        if (number == 2) return true;
+        for (let i = 2; i < number; i++) {
+          if (number % i === 0) {
+            return false;
+          }
+          return true;
         }
-        return factorial;
       }
     </script>
   </body>
