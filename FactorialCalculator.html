@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factorial Calculator</title>
+    <style>
+      .container {
+        max-width: 1160px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        background-color: aquamarine;
+        border-radius: 2rem;
+        box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.067);
+        padding: 5rem 0;
+        margin-top: 100px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+      }
+      label {
+        font-weight: bold;
+        font-size: 24px;
+      }
+      input,
+      button {
+        border: none;
+        border-radius: 0.5rem;
+        outline: none;
+        padding: 1rem 3rem;
+        background-color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      button {
+        border: 3px solid rgb(1, 80, 1);
+        border-radius: 1.5rem;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="#" id="form">
+        <label for="factorial_input"
+          >Enter the Number to Calculate Factorial!</label
+        >
+        <input type="text" id="factorial_input" />
+        <button type="submit">Calculate Factorial</button>
+      </form>
+      <h1 id="result"></h1>
+    </div>
+
+    <script>
+      let form = document.getElementById("form");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let number = Number(document.getElementById("factorial_input").value);
+        let result = document.getElementById("result");
+        if (number <= 0) {
+          result.innerText = `The Factorial of ${number} can't be calculated`;
+        } else {
+          result.innerText = `The Factorial of ${number} ==> ${calculateFactorial(
+            number
+          )}`;
+        }
+      });
+
+      function calculateFactorial(number) {
+        let factorial = 1;
+        for (let i = 1; i <= number; i++) {
+          factorial *= i;
+        }
+        return factorial;
+      }
+    </script>
+  </body>
+</html>
